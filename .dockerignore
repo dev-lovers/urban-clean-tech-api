@@ -1,0 +1,27 @@
+# Ignore locally installed dependencies
+node_modules
+
+# Ignore log and cache files
+logs
+*.log
+.cache
+
+# Ignore build output
+dist
+build
+
+# Ignore local environment files
+.env
+.env.local
+.vscode
+.idea
+
+# Ignore version control files
+.git
+.gitignore
+
+# Ignore unnecessary files for Docker
+docker-compose.override.yml
+
+# Do not copy Dockerfile into the image
+Dockerfile

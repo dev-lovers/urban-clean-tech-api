@@ -1,0 +1,34 @@
+# Node.js dependencies
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# TypeScript output directories
+dist
+build
+
+# Environment configuration files
+.env
+.env.local
+
+# Cache and log files
+.cache
+logs
+*.log
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# Editor-specific settings
+.vscode
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Docker Compose override file
+docker-compose.override.yml
