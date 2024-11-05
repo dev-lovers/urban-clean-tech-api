@@ -5,7 +5,12 @@ class BaseController {
     res.json({
       message: "Welcome to Urban Clean Tech API",
       endpoints: {
-        status: "/api/status",
+        api: {
+          status: "/api/status",
+        },
+        socket: {
+          gps: "/gps",
+        },
       },
     });
   }
