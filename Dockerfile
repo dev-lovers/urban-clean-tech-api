@@ -19,7 +19,4 @@ COPY . .
 RUN npm run build
 
 # Specifies the port on which the server will run
-EXPOSE ${PORT}
-
-# Command to run the Node.js server
-CMD ["node", "dist/index.js"]
+EXPOSE ${PORT:-4000}

@@ -1,13 +1,13 @@
 # Urban Clean Tech API
 
-Um servidor Node.js em TypeScript utilizando `Express`, `Socket.IO` e `Redis` para monitoramento e transmissão de coordenadas GPS. Este projeto é executado em containers Docker, com Redis gerenciado pelo Docker Compose.
+Um servidor Node.js em TypeScript que utiliza `Express`, `Socket.IO` (com namespaces) e `Redis` para monitoramento e transmissão de coordenadas GPS. Este projeto é executado em contêineres Docker, com o Redis sendo gerenciado pelo Docker Compose.
 
 ## Funcionalidades
 
 - **Express** para gerenciar a API.
-- **Socket.IO** para comunicação em tempo real com os clientes.
-- **Redis** para armazenamento de dados em cache, especialmente coordenadas GPS.
-- Configuração via Docker Compose para fácil implantação e gerenciamento dos containers.
+- **Socket.IO** com namespace `/gps` para comunicação em tempo real.
+- **Redis** para armazenamento em cache das coordenadas GPS.
+- Contêineres Docker para fácil implantação, com Redis gerenciado via Docker Compose.
 
 ## Tecnologias Utilizadas
 
@@ -47,7 +47,7 @@ Um servidor Node.js em TypeScript utilizando `Express`, `Socket.IO` e `Redis` pa
 
 ### Executando com Docker
 
-1. **Inicie os containers** com Docker Compose:
+1. **Inicie os contêineres** com Docker Compose:
 
    ```bash
    docker-compose up --build
@@ -55,14 +55,15 @@ Um servidor Node.js em TypeScript utilizando `Express`, `Socket.IO` e `Redis` pa
 
 2. O servidor estará disponível em [http://localhost:4000](http://localhost:4000).
 
-### Endpoints
+## Endpoints da API
 
-- **`GET /`** - Endpoint para verificar se o servidor está rodando. Deve retornar `Servidor de GPS rodando!`.
+As rotas da API estão organizadas sob o prefixo `/api` para padronização:
 
-### Socket.IO Eventos
+- **`GET /api/status`** - Retorna o status do servidor. Deve responder com `{ message: "Server running!" }`.
 
-- **`coordenadas`**: Enviado pelo cliente com um objeto `{ lat: number, lng: number }`. O servidor armazena as coordenadas no Redis e retransmite para todos os clientes conectados.
-- **`atualizarCoordenadas`**: Evento de broadcast para enviar as coordenadas mais recentes a todos os clientes conectados.
+## Eventos do Socket.IO
+
+O Socket.IO agora utiliza um namespace específico `/gps` para comunicação em tempo real com os clientes.
 
 ## Comandos Úteis
 
@@ -70,7 +71,7 @@ Um servidor Node.js em TypeScript utilizando `Express`, `Socket.IO` e `Redis` pa
 - **Compilar TypeScript**: `npm run build`
 - **Iniciar servidor localmente** (fora do Docker): `npm start`
 - **Iniciar com Docker Compose**: `docker-compose up --build`
-- **Encerrar containers**: `docker-compose down`
+- **Encerrar contêineres**: `docker-compose down`
 
 ## Observações
 

@@ -6,6 +6,9 @@ logs
 *.log
 .cache
 
+# OS-generated files
+.DS_Store
+
 # Ignore build output
 dist
 build
